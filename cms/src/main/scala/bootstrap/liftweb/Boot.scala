@@ -30,6 +30,9 @@ class Boot {
       DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
     }
 
+    /* Internationalization */
+    LiftRules.resourceNames = "Blog" :: Nil
+
     // where to search snippet
     LiftRules.addToPackages("net.onisia")
     Schemifier.schemify(true, Schemifier.infoF _, User)
@@ -41,7 +44,7 @@ class Boot {
       Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
 	       "Static Content")) ::
       // Menu entries for the User management stuff
-      User.sitemap :_*)
+      User.menus :_*)
 
     LiftRules.setSiteMapFunc(sitemap)
 
